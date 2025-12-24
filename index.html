@@ -7,7 +7,7 @@
     <title>LAVISH LASH</title>
     <meta
       name="description"
-      content="Experience luxurious eyelash extensions at LAVISH LASH. Professional lash artists offering Classic, Hybrid, and Volume styles. Transform your look with our premium lash services."
+      content="Experience luxurious eyelash extensions at LAVISH LASH. Professional lash artists offering Classic, Hybrid, Volume, and Wispy styles. Transform your look with our premium lash services."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -130,26 +130,25 @@
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
       }
 
-/* 让首页店名用白色，保持可读性 */
-.home h1 {
-  font-family: 'Josefin Sans', sans-serif;   /* ← 使用正常字体 */
-  font-size: clamp(2.4rem, 4vw + 1rem, 4.25rem);
-  margin-bottom: 10px;
-  letter-spacing: 2.5px;
-  color: #ffffff;                 /* 店名白色 */
-  text-shadow: 0 2px 10px rgba(0,0,0,0.18);
-  font-weight: 700;
-  background: none;
-  -webkit-background-clip: initial;
-  background-clip: initial;
-}
+      /* Keep home title white for readability */
+      .home h1 {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: clamp(2.4rem, 4vw + 1rem, 4.25rem);
+        margin-bottom: 10px;
+        letter-spacing: 2.5px;
+        color: #ffffff;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.18);
+        font-weight: 700;
+        background: none;
+        -webkit-background-clip: initial;
+        background-clip: initial;
+      }
 
-.home-address{
-  font-size: 1rem;
-  margin: 0 0 20px 0;
-  opacity: 0.95;
-}
-
+      .home-address{
+        font-size: 1rem;
+        margin: 0 0 20px 0;
+        opacity: 0.95;
+      }
 
       .spa-tagline {
         font-size: 1.3rem;
@@ -317,8 +316,6 @@
       .lightbox-prev { left: 20px; }
       .lightbox-next { right: 20px; }
 
-      .loading-message { text-align: center; color: #666; font-style: italic; margin: 40px 0; }
-
       /* Booking Form */
       .booking-form {
         display: none;
@@ -395,6 +392,8 @@
         background: white; margin: 10px; padding: 30px; border-radius: 15px;
         box-shadow: 0 5px 20px rgba(0,0,0,0.06); width: 320px; transition: all 0.3s ease;
         border: 1px solid rgba(255,193,204,0.4);
+        display: flex;
+        flex-direction: column;
       }
       .service-box:hover {
         transform: translateY(-8px);
@@ -405,7 +404,7 @@
       .service-box h3, .review-card h3 { color: #e88fb4; font-size: 1.6rem; margin-bottom: 15px; font-weight: 500; }
       .service-box p, .review-card p { color: #666; line-height: 1.7; }
 
-      /* Uniform service images (added for Classic/Hybrid/Volume) */
+      /* Uniform service images */
       .service-img {
         width: 100%;
         height: 220px;              /* unify visible size */
@@ -417,15 +416,6 @@
         background-color: #fff7fa;  /* soft placeholder while loading */
       }
 
-      /* Price Wrapper */
-      .service-box .price-wrapper {
-        margin-top: 20px;
-        background: linear-gradient(135deg, #fff9fb 0%, #ffeef5 100%);
-        padding: 15px; border-radius: 10px; display: block; min-height: 50px;
-        border-left: 4px solid #ffc1cc;
-      }
-      .price-wrapper h4 { margin: 5px 0; color: #333; font-size: 1.3rem; text-align: center; }
-
       /* Contact Section */
       #contact { background: linear-gradient(135deg, #fff9fb 0%, #ffeef5 100%); }
 
@@ -436,8 +426,19 @@
         display: flex; flex-direction: column; align-items: center; background: white;
         padding: 40px; border-radius: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.08);
         border: 1px solid rgba(255,193,204,0.35);
+        width: 100%; max-width: 800px; /* Added max-width for better layout with map */
       }
-      .appointment-info { margin-top: 30px; text-align: left; width: 100%; }
+      
+      .map-frame {
+        width: 100%;
+        height: 350px;
+        border: 0;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      }
+
+      .appointment-info { margin-top: 10px; text-align: left; width: 100%; max-width: 600px; }
       .appointment-info p { margin: 15px 0; font-size: 1.2rem; color: #555; }
       .appointment-info a { color: #e88fb4; text-decoration: none; transition: color 0.3s ease; font-weight: 600; }
       .appointment-info a:hover { color: #ff9eb5; text-decoration: underline; }
@@ -500,14 +501,14 @@
         <p class="spa-tagline">Your destination for luxurious eyelash extensions</p>
       </div>
 
-      <!-- Call + Book Now (合并为同一块) -->
+      <!-- Call + Book Now -->
       <div class="contact-buttons">
         <div class="contact-card">
           <h3>📞 Call for Appointment</h3>
           <a href="tel:+1-352-640-3934" class="phone-number">352-640-3934</a>
           <p>Speak directly with our professional lash artists to schedule your perfect lash experience within 30 minutes.</p>
 
-          <!-- Book Now（放入同一块） -->
+          <!-- Book Now -->
           <div style="margin-top:12px;">
             <h3 style="margin-top:10px;">💻 Book Online</h3>
             <script id='setmore_script' type='text/javascript' src='https://assets.setmore.com/integration/static/setmoreIframeLive.js'></script>
@@ -559,9 +560,10 @@
             <label for="service">Lash Extension Service *</label>
             <select id="service" name="service" required>
               <option value="">Select a Service</option>
-              <option value="Classic Style - $100">Classic Style - $100</option>
-              <option value="Hybrid Style - $120">Hybrid Style - $120</option>
-              <option value="Volume Style - $120">Volume Style - $120</option>
+              <option value="Classic Style">Classic Style</option>
+              <option value="Hybrid Style">Hybrid Style</option>
+              <option value="Volume Style">Volume Style</option>
+              <option value="Wispy Style">Wispy Style</option>
             </select>
           </div>
 
@@ -589,9 +591,6 @@
           <p>
             Perfect for a natural, everyday look. One extension is applied to each natural lash for length and subtle definition.
           </p>
-          <div class="price-wrapper">
-            <h4>$100</h4>
-          </div>
         </div>
 
         <div class="service-box">
@@ -600,9 +599,6 @@
           <p>
             The perfect blend of Classic and Volume techniques. Combines natural-looking Classic lashes with strategically placed Volume fans for texture and fullness.
           </p>
-          <div class="price-wrapper">
-            <h4>$120</h4>
-          </div>
         </div>
 
         <div class="service-box">
@@ -611,9 +607,15 @@
           <p>
             For dramatic, full lashes. Multiple lightweight extensions are applied to each natural lash creating a bold, glamorous look perfect for special occasions.
           </p>
-          <div class="price-wrapper">
-            <h4>$120</h4>
-          </div>
+        </div>
+
+        <!-- Added Wispy Style -->
+        <div class="service-box">
+          <img src="4.jpg" alt="Wispy Style eyelash extensions result" class="service-img">
+          <h3>Wispy Style</h3>
+          <p>
+            A trending, textured look often called the "Kim K" effect. We use alternating lash lengths to create spikes and valleys for a fluttery, eye-opening appearance.
+          </p>
         </div>
       </div>
     </section>
@@ -625,15 +627,8 @@
         <h4>See the stunning transformations we create</h4>
         
         <div class="photo-grid" id="photoGrid">
-          <div class="photo-item" onclick="openLightbox(0)">
-            <img src="https://purelab2021.com/wp-content/uploads/2022/02/take-you-quickly-to-become-an-eyelash-artist.jpg" alt="Eyelash Extension Application">
-            <div class="photo-overlay">
-              <h4>Professional Service</h4>
-              <p>Expert lash application process</p>
-            </div>
-          </div>
           
-          <div class="photo-item" onclick="openLightbox(1)">
+          <div class="photo-item" onclick="openLightbox(0)">
             <img src="https://d3nb97lilvchvx.cloudfront.net/category_page/eyelash.jpg" alt="Beautiful Eyelash Extensions">
             <div class="photo-overlay">
               <h4>Volume Style</h4>
@@ -641,8 +636,7 @@
             </div>
           </div>
           
-          <!-- 第3张已替换为你提供的链接 -->
-          <div class="photo-item" onclick="openLightbox(2)">
+          <div class="photo-item" onclick="openLightbox(1)">
             <img src="https://scedna.sce.pccu.edu.tw/FileManager/FileShow.aspx?FileId=fa34e144-7fd3-4120-877c-f4c4ace50348" alt="Classic Lash Extensions">
             <div class="photo-overlay">
               <h4>Classic Style</h4>
@@ -650,7 +644,7 @@
             </div>
           </div>
           
-          <div class="photo-item" onclick="openLightbox(3)">
+          <div class="photo-item" onclick="openLightbox(2)">
             <img src="https://www.msemma.com.tw/webfile/webdate/4845ed651e6b73a79eff6ff045a54c68/bbd45059acf82f0ee9b2b1b73e4e13845.jpg" alt="Lash Extension Tools">
             <div class="photo-overlay">
               <h4>Professional Tools</h4>
@@ -658,21 +652,14 @@
             </div>
           </div>
           
-          <div class="photo-item" onclick="openLightbox(4)">
+          <div class="photo-item" onclick="openLightbox(3)">
             <img src="https://www.gomaji.com/blog/wp-content/uploads/2019/12/Eyelash1.jpg" alt="Eyelash Extension Close-up">
             <div class="photo-overlay">
               <h4>Perfect Details</h4>
               <p>Precision and beauty in every lash</p>
             </div>
           </div>
-          
-          <div class="photo-item" onclick="openLightbox(5)">
-            <img src="https://purelab2021.com/wp-content/uploads/2022/02/take-you-quickly-to-become-an-eyelash-artist.jpg" alt="Hybrid Lash Extensions">
-            <div class="photo-overlay">
-              <h4>Hybrid Style</h4>
-              <p>Perfect blend of natural and volume</p>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
@@ -720,6 +707,14 @@
       <h2>Visit Our Studio</h2>
       <div class="appointment-card">
         <div class="appointment-map">
+          <!-- Google Maps Embed -->
+          <iframe 
+            class="map-frame"
+            src="https://maps.google.com/maps?q=2606%20SW%2019th%20Ave%20Unit%20200%20Studio%209%2C%20Ocala%2C%20FL%2034471&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+
           <div class="appointment-info">
             <p><strong>📍 Address:</strong> 2606 SW 19th Ave Unit 200 Studio 9, Ocala FL 34471</p>
             <p><strong>📞 Phone:</strong> <a href="tel:+1-352-640-3934">352-640-3934</a></p>
@@ -728,7 +723,7 @@
           </div>
           
           <h3>Professional Eyelash Extensions</h3>
-          <p style="color: #666; text-align: center; margin-top: 15px;">
+          <p style="color: #666; text-align: center; margin-top: 15px; max-width: 600px;">
             Located in the heart of Ocala, our luxurious studio provides a relaxing environment 
             for your lash transformation. We're open late to accommodate your busy schedule!
           </p>
@@ -736,7 +731,7 @@
       </div>
     </section>
 
-    <!-- Bottom Book Now Block（在底部新增同样风格的块，放 Book Now 按钮） -->
+    <!-- Bottom Book Now Block -->
     <section id="booknow-bottom" style="padding-top:0;">
       <div class="contact-card" style="max-width:380px; margin:0 auto;">
         <h3>💻 Book Online</h3>
@@ -753,14 +748,12 @@
     </footer>
 
     <script>
-      // Gallery images array（第3张替换为你提供的链接）
+      // Gallery images array (Updated: Removed first and last items)
       const galleryImages = [
-        'https://purelab2021.com/wp-content/uploads/2022/02/take-you-quickly-to-become-an-eyelash-artist.jpg',
         'https://d3nb97lilvchvx.cloudfront.net/category_page/eyelash.jpg',
         'https://scedna.sce.pccu.edu.tw/FileManager/FileShow.aspx?FileId=fa34e144-7fd3-4120-877c-f4c4ace50348',
         'https://www.msemma.com.tw/webfile/webdate/4845ed651e6b73a79eff6ff045a54c68/bbd45059acf82f0ee9b2b1b73e4e13845.jpg',
-        'https://www.gomaji.com/blog/wp-content/uploads/2019/12/Eyelash1.jpg',
-        'https://purelab2021.com/wp-content/uploads/2022/02/take-you-quickly-to-become-an-eyelash-artist.jpg'
+        'https://www.gomaji.com/blog/wp-content/uploads/2019/12/Eyelash1.jpg'
       ];
 
       let currentImageIndex = 0;
